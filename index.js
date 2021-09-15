@@ -57,11 +57,12 @@ Person.prototype.toString = function() {
 }
 const neo = new Person('neo', 20);
 const Mary = new Person('Mary', 50);
+const june = new Person('june', 38);
 
-
-
-
-
+console.log(neo);
+console.log(Mary);
+console.log(june.toString());
+console.log(neo.toString());
 
 
 
@@ -87,10 +88,12 @@ function Car(model, milesPerGallon) {
  this.tank =  0;
  this.odometer = 0; 
 }
-Car.prototype.fill = function(gallons){
+Car.prototype.fill = function(gallons)
+{
 return this.tank += gallons;
 }
-Car.prototype.drive = function(distance){
+Car.prototype.drive = function(distance)
+{
   if(distance > 0){
     this.odometer = distance;
     this.tank - this.milesPerGallon;
@@ -109,18 +112,26 @@ Car.prototype.drive = function(distance){
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
-}
+Baby.prototype = Object.create(Person.prototype);
 
+function Baby(name, age, favoriteToy) {
+ this.name = name;
+ this.age = age;
+ this.favoriteToy = favoriteToy;
+}
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}", ${this.favoriteToy} being the favorite toy.`
+}
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+
+  1. this will default to the window,the global object in node or undefined in strict mode.
+
+  2.  bind - it does not immediately invoke the function instead it returns a brand new function that can be invoked later. 
+  3. inplicte the function is invoked always look to the left of the dot, that's what this refers to.
+  4. Explicit Binding = will immediately invoke the function.
 */
 
 

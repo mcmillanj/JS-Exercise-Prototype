@@ -81,8 +81,24 @@ const Mary = new Person('Mary', 50);
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-  
+function Car(model, milesPerGallon) {
+ this.model = model;
+ this.milesPerGallon = milesPerGallon;
+ this.tank =  0;
+ this.odometer = 0; 
+}
+Car.prototype.fill = function(gallons){
+return this.tank += gallons;
+}
+Car.prototype.drive = function(distance){
+  if(distance > 0){
+    this.odometer = distance;
+    this.tank - this.milesPerGallon;
+  }
+  else 
+  {
+    return `I ran out of fuel at ${this.odometer} miles!" ${this.odometer} being odometer.`
+  }
 }
 
 
